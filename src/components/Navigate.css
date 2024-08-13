@@ -1,0 +1,32 @@
+.navigation {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: black;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    margin: 25px;
+}
+
+.nav-items {
+    display: flex;
+    gap: 60px;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: black;
+    background-color: white;
+    border-radius: 2px;
+    padding: 15px;
+}

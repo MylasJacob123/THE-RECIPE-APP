@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-function Fetch() {
-  const [recipes, setRecipes] = useState([]);
+function Recipes() {
+    const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
     // Simulate fetching data (in a real scenario, you would fetch from an API)
@@ -18,9 +18,10 @@ function Fetch() {
 
     fetchData();
   }, []);
-
   return (
     <div>
+        <div style={{ margin: "20px" }}>
+      <h1>Great Rice Diner Recipes</h1>
       {recipes.length === 0 ? (
         <p>Loading...</p>
       ) : (
@@ -46,7 +47,7 @@ function Fetch() {
         </ul>
       )}
     </div>
-  );
+    </div>
+  )
 }
-
-export default Fetch;
+export default Recipes;
