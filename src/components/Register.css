@@ -17,6 +17,10 @@
     object-fit: cover;
   }
 
+.register-text {
+    margin-bottom: -15px;
+}
+
 .register-HEADING {
     font-size: 4em;
     font-weight: 700;

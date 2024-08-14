@@ -57,10 +57,10 @@ function Login() {
           Your browser does not support the video tag.
         </video>
       </div>
+      <h3 className="login-text">COOKING WITH LEPS</h3>
       <form className="login-form">
-      <h1 className="login-HEADING">Login</h1>
+        <h1 className="login-HEADING">Login</h1>
         <div className="fieldset-login">
-          <br />
           <input
             className="login-input"
             type="email"
@@ -72,7 +72,6 @@ function Login() {
         </div>
 
         <div className="fieldset-login">
-          <br />
           <input
             className="login-input"
             type="password"

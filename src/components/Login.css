@@ -17,6 +17,10 @@
     object-fit: cover;
   }
 
+.login-text {
+    margin-bottom: -15px;
+}  
+
 .login-HEADING {
     font-size: 4em;
     font-weight: 700;

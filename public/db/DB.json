@@ -24,7 +24,10 @@
         "Roll up the wraps",
         " Cook in a clean frying pan over high heat for 1-2 mins each side or until toasted and heated through.",
         "Stir-fry the rice with the vegetables, ensuring it gets well mixed and heated through."
-      ]
+      ],
+      "prep": "05min",
+      "cook": "15min",
+      "serves": "2"
     },
     {
       "name": "Broccoli and feta quesadilla",
@@ -50,7 +53,10 @@
         "Top with the broccoli mixture and spinach.",
         "Fold to enclose filling.",
         "Place in a sandwich press (see notes) and toast until golden."
-      ]
+      ],
+      "prep": "05min",
+      "cook": "05min",
+      "serves": "1"
     },
     {
       "name": "Melonade",
@@ -73,7 +79,10 @@
         "Strain through a sieve into a large jug to remove any seeds and fibrous pulp.",
         "Pour the lemon juice, vanilla and chilled sugar syrup into the jug and stir until combined",
         "Serve over ice with mint."
-      ]
+      ],
+      "prep": "1h 15m",
+      "cook": "05min",
+      "makes": "1.25L"
     },
     {
       "name": "Banoffee dessert cake",
@@ -129,7 +138,10 @@
         "Drizzle with Sticky Caramel Sauce.",
         "Sprinkle with hazelnuts and serve with dark chocolate curls.",
         "Serve immediately."
-      ]
+      ],
+      "prep": "1h 15m",
+      "cook": "05min",
+      "makes": "1.25L"
     },
     {
       "name": "Brekkie eggs with Matt's instant mayo",
@@ -169,7 +181,10 @@
         "Spread toasted muffin halves with butter.",
         "Top each with rocket, avocado and an egg.",
         "Spoon a dollop of instant mayo on top and sprinkle with fried shallots to serve."
-      ]
+      ],
+      "prep": "10min",
+      "cook": "05min",
+      "serves": "4"
     },
     {
       "name": "Shepherd’s pie spuds",
@@ -202,7 +217,10 @@
         "Place on a baking tray.",
         "Bake for 20 mins or until heated through and golden.",
         " Sprinkle with parsley."
-      ]
+      ],
+      "prep": "15min",
+      "cook": "35min",
+      "serves": "4"
     },
     {
       "name": "PB and J smoothie",
@@ -226,7 +244,9 @@
         "Add the strawberry and raspberries to the remaining banana mixture in the blender and blend until smooth.",
         "Pour over the banana mixture in glasses and use a straw to gently swirl.",
         "Top with extra raspberries to serve."
-      ]
+      ],
+      "prep": "10min",
+      "serves": "2"
     },
     {
       "name": "Baileys raspberry pull-apart pavlova",
@@ -272,7 +292,10 @@
         "Dust lightly with icing sugar.",
         "Scatter over mint leaves and drizzle with a little extra , if using.",
         "To serve, gently pull apart each meringue."
-      ]
+      ],
+      "prep": "1h",
+      "cook": "1h 30min",
+      "serves": "12"
     }
   ]
 }

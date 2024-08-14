@@ -66,11 +66,11 @@ function Register() {
           Your browser does not support the video tag.
         </video>
       </div>
+      <h3 className="register-text">COOKING WITH LEPS</h3>
 
       <form className="register-form">
         <h1 className="register-HEADING">Register</h1>
         <div className="fieldset-register">
-          <br />
           <input
             className="register-input"
             type="text"
@@ -82,7 +82,6 @@ function Register() {
         </div>
 
         <div className="fieldset-register">
-          <br />
           <input
             className="register-input"
             type="email"
@@ -94,7 +93,6 @@ function Register() {
         </div>
 
         <div className="fieldset-register">
-          <br />
           <input
             className="register-input"
             type="password"
