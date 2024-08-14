@@ -24,7 +24,9 @@ function Login() {
       alert("Please enter your password");
       return false;
     } else if (!/(?=.*\d)(?=.*[!@#$%^&*])/.test(password)) {
-      alert("Password must contain at least one digit and one special character");
+      alert(
+        "Password must contain at least one digit and one special character"
+      );
       return false;
     }
 
@@ -46,14 +48,23 @@ function Login() {
 
   return (
     <div className="login">
-      <h1 className="login-HEADING">Login</h1>
+      <div class="video">
+        <video className="logo-video" autoPlay muted loop>
+          <source
+            src="https://cdnl.iconscout.com/lottie/premium/preview-watermark/meal-8820888-7140050.mp4"
+            type="video/mp4"
+          ></source>
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <form className="login-form">
+      <h1 className="login-HEADING">Login</h1>
         <div className="fieldset-login">
-          <label className="login-label">Email</label>
           <br />
           <input
             className="login-input"
             type="email"
+            placeholder="Email"
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -61,11 +72,11 @@ function Login() {
         </div>
 
         <div className="fieldset-login">
-          <label className="login-label">Password</label>
           <br />
           <input
             className="login-input"
             type="password"
+            placeholder="Password"
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -75,14 +86,16 @@ function Login() {
         <button className="login-btn" onClick={goToHome}>
           Login
         </button>
+        <div>
+          <p className="outer-message">
+            Not registered yet? Then{" "}
+            <span className="to-register-click" onClick={goToRegister}>
+              click here
+            </span>
+            .
+          </p>
+        </div>
       </form>
-      <p className="outer-message">
-        Not registered yet? Then{" "}
-        <span className="to-register-click" onClick={goToRegister}>
-          click here
-        </span>
-        .
-      </p>
     </div>
   );
 }

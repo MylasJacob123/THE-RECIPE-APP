@@ -57,14 +57,24 @@ function Register() {
 
   return (
     <div className="register">
-      <h1 className="register-HEADING">Register</h1>
+      <div class="vid">
+        <video className="logo-video-gif" autoPlay muted loop>
+          <source
+            src="https://cdnl.iconscout.com/lottie/premium/preview-watermark/meal-8820888-7140050.mp4"
+            type="video/mp4"
+          ></source>
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
       <form className="register-form">
+        <h1 className="register-HEADING">Register</h1>
         <div className="fieldset-register">
-          <label className="register-label">Username</label>
           <br />
           <input
             className="register-input"
             type="text"
+            placeholder="Username"
             name="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -72,11 +82,11 @@ function Register() {
         </div>
 
         <div className="fieldset-register">
-          <label className="register-label">Email</label>
           <br />
           <input
             className="register-input"
             type="email"
+            placeholder="Email"
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -84,11 +94,11 @@ function Register() {
         </div>
 
         <div className="fieldset-register">
-          <label className="register-label">Password</label>
           <br />
           <input
             className="register-input"
             type="password"
+            placeholder="Password"
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -98,14 +108,16 @@ function Register() {
         <button className="register-btn" onClick={goToHome}>
           Register
         </button>
+        <div>
+          <p className="outer-message">
+            Already have an account? Then{" "}
+            <span className="to-register-click" onClick={goToLogin}>
+              click here
+            </span>
+            .
+          </p>
+        </div>
       </form>
-      <p className="outer-message">
-        Already have an account? Then{" "}
-        <span className="to-register-click" onClick={goToLogin}>
-          click here
-        </span>
-        .
-      </p>
     </div>
   );
 }
