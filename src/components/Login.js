@@ -77,7 +77,7 @@ function Login() {
         </button>
       </form>
       <p className="outer-message">
-        If you have not registered yet, then{" "}
+        Not registered yet? Then{" "}
         <span className="to-register-click" onClick={goToRegister}>
           click here
         </span>
