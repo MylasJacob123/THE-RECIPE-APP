@@ -85,10 +85,10 @@
       ],
       "prep": "1h 15m",
       "cook": "05min",
-      "makes": "1.25L"
+      "serves": "4"
     },
     {
-      "category": "dessert",
+      "category": "Dessert",
       "name": "Banoffee dessert cake",
       "image": "https://img.taste.com.au/DglEC8e6/w720-h480-cfill-q80/taste/2020/01/banoffee-dessert-cake-158047-1.jpg",
       "ingredients": [
@@ -142,9 +142,9 @@
         "Sprinkle with hazelnuts and serve with dark chocolate curls.",
         "Serve immediately."
       ],
-      "prep": "1h 15m",
-      "cook": "05min",
-      "makes": "1.25L"
+      "prep": "20m",
+      "cook": "1h",
+      "serves": "12"
     },
     {
       "category": "Breakfast",
@@ -254,7 +254,7 @@
       "serves": "2"
     },
     {
-      "category": "dessert",
+      "category": "Dessert",
       "name": "Baileys raspberry pull-apart pavlova",
       "image": "https://img.taste.com.au/jxQZ369i/w720-h480-cfill-q80/taste/2021/11/baileys-red-velvet-pull-apart-pavlova-174839-2.jpg",
       "ingredients": [

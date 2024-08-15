@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./Recipes.css";
 
 function Recipes() {
   const [recipes, setRecipes] = useState([]);
@@ -18,10 +19,10 @@ function Recipes() {
   }, []);
 
   return (
-    <div style={{ margin: "20px" }}>
+    <div className="recipe-grid">
       {recipes.length > 0 ? (
         recipes.map((recipe, index) => (
-          <div key={index} style={{ marginBottom: "40px" }}>
+          <div key={index} className="card">
             <h2>{recipe.category}</h2>
             <h2>{recipe.name}</h2>
             <img
@@ -30,7 +31,7 @@ function Recipes() {
               style={{ width: "100%", maxWidth: "400px", height: "auto" }}
             />
             <h3>Ingredients</h3>
-            <ul>
+            <ul className="ingredients">
               {recipe.ingredients.map((ingredient, i) => (
                 <li key={i}>{ingredient}</li>
               ))}

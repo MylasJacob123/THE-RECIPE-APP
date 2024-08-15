@@ -1,0 +1,50 @@
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 352px);
+    grid-template-rows: repeat(4, 488px);
+    gap: 40px;
+    padding: 20px;
+  }
+  
+  .card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .card:hover {
+    transform: scale(1.02);
+  }
+  
+  .card img {
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+  
+  .card h2 {
+    font-size: 1.2em;
+    margin-bottom: 8px;
+    color: orangered;
+  }
+  
+  .card h3 {
+    font-size: 16px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .card ul, .card ol {
+    padding-left: 20px;
+    margin: 0;
+    max-width: 300px;
+  }
+  
+  .card p {
+    margin-top: 16px;
+  }
