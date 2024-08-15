@@ -1,6 +1,7 @@
 {
   "recipes": [
     {
+      "category": "Breakfast",
       "name": "Breakfast burritos",
       "image": "https://img.taste.com.au/V-xJzaBZ/w720-h480-cfill-q80/taste/2020/01/jan20_breakfast-burritos-taste-156325-1.jpg",
       "ingredients": [
@@ -30,6 +31,7 @@
       "serves": "2"
     },
     {
+      "category": "Lunch",
       "name": "Broccoli and feta quesadilla",
       "image": "https://img.taste.com.au/KBFWEjV4/w720-h480-cfill-q80/taste/2022/12/broccoli-and-feta-quesadilla-184083-2.jpg",
       "ingredients": [
@@ -59,6 +61,7 @@
       "serves": "1"
     },
     {
+      "category": "Drink",
       "name": "Melonade",
       "image": "https://img.taste.com.au/To2SZZeO/w720-h480-cfill-q80/taste/2022/12/melonade-184025-2.png",
       "ingredients": [
@@ -85,6 +88,7 @@
       "makes": "1.25L"
     },
     {
+      "category": "dessert",
       "name": "Banoffee dessert cake",
       "image": "https://img.taste.com.au/DglEC8e6/w720-h480-cfill-q80/taste/2020/01/banoffee-dessert-cake-158047-1.jpg",
       "ingredients": [
@@ -99,9 +103,8 @@
         "1 cup sour cream,",
         "1 tbsp icing sugar",
         "1/4 cup chopped roasted hazelnuts",
-        "Dark chocolate curls, to serve"
-      ],
-      "Sticky Caramel Sauce": [
+        "Dark chocolate curls, to serve",
+        "And for the Sticky Caramel Sauce",
         "60g butter",
         "1/2 cup brown sugar",
         "1/2 cup thickened cream"
@@ -144,6 +147,7 @@
       "makes": "1.25L"
     },
     {
+      "category": "Breakfast",
       "name": "Brekkie eggs with Matt's instant mayo",
       "image": "https://img.taste.com.au/_rbpFTzv/w720-h480-cfill-q80/taste/2016/11/brekkie-eggs-with-matts-instant-mayo-99867-1.jpeg",
       "ingredients": [
@@ -153,9 +157,8 @@
         "Butter, at room temperature",
         "Baby rocket leaves, to serve",
         "1 avocado, peeled, thinly sliced",
-        "1 tbsp fried shallots"
-      ],
-      "Instant mayo": [
+        "1 tbsp fried shallots",
+        "And for the Instant mayo",
         "1 extra-large egg",
         "250ml grapeseed oil",
         "1 tbsp lemon juice",
@@ -187,6 +190,7 @@
       "serves": "4"
     },
     {
+      "category": "Lunch",
       "name": "Shepherd’s pie spuds",
       "image": "https://img.taste.com.au/ymDnHvih/w720-h480-cfill-q80/taste/2019/01/shepherds-pie-spuds-146639-1.jpg",
       "ingredients": [
@@ -223,6 +227,7 @@
       "serves": "4"
     },
     {
+      "category": "Drink",
       "name": "PB and J smoothie",
       "image": "https://img.taste.com.au/J_sbp8h3/w720-h480-cfill-q80/taste/2020/08/september20_pb-and-j-smoothie-taste-164292-1.jpg",
       "ingredients": [
@@ -249,6 +254,7 @@
       "serves": "2"
     },
     {
+      "category": "dessert",
       "name": "Baileys raspberry pull-apart pavlova",
       "image": "https://img.taste.com.au/jxQZ369i/w720-h480-cfill-q80/taste/2021/11/baileys-red-velvet-pull-apart-pavlova-174839-2.jpg",
       "ingredients": [

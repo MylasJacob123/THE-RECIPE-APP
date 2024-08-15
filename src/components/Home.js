@@ -37,7 +37,7 @@ function Home() {
                 className="category-image"
                 src="https://joyfoodsunshine.com/wp-content/uploads/2019/01/healthy-greek-yogurt-pancakes-recipe-1.jpg" alt=""
               />
-              <h3 className="category-name">Breakfast</h3>
+              <h3 className="category-name"><span>Breakfast</span></h3>
               <p className="category-description">
                 Start your day with a delicious breakfast
               </p>
@@ -47,7 +47,7 @@ function Home() {
                 className="category-image"
                 src="https://www.feastingathome.com/wp-content/uploads/2022/02/Banh-Mi-Sandwich-5.jpg" alt=""
               />
-              <h3 className="category-name">Lunch</h3>
+              <h3 className="category-name"><span>Lunch</span></h3>
               <p className="category-description">
                 Enjoy a satisfying lunch with our recipes
               </p>
@@ -57,7 +57,7 @@ function Home() {
                 className="category-image"
                 src="https://www.watchwhatueat.com/wp-content/uploads/2019/04/Refreshing-Homemade-Strawberry-Lemonade-6.jpg" alt=""
               />
-              <h3 className="category-name">Drinks</h3>
+              <h3 className="category-name"><span>Drinks</span></h3>
               <p className="category-description">
                 Quench your thirst with our refreshing drinks
               </p>
@@ -67,7 +67,7 @@ function Home() {
                 className="category-image"
                 src="https://img.taste.com.au/hi4kp6iC/taste/2023/10/5-ingredient-espresso-martini-terrine-192734-2.jpg" alt=""
               />
-              <h3 className="category-name">Desserts</h3>
+              <h3 className="category-name"><span>Desserts</span></h3>
               <p className="category-description">
                 Indulge in our decadent desserts
               </p>
