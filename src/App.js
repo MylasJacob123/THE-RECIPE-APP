@@ -8,7 +8,6 @@ import Login from "./components/Login";
 import Recipes from "./components/Recipes";
 import Details from "./components/Details";
 
-
 function App() {
   return (
     <div className="App">

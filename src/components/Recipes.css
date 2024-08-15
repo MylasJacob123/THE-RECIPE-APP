@@ -1,3 +1,19 @@
+body {
+  height: 100vh;
+}
+
+.recipes-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+}
+
 .recipe-grid {
     display: grid;
     grid-template-columns: repeat(4, 352px);

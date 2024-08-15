@@ -7,7 +7,7 @@ function Home() {
 
     const goToRecipes = () => {
         navigate("/Recipes"); 
-      };
+      };  
       
   return (
     <div className="home-display">
@@ -32,7 +32,7 @@ function Home() {
           <h2 className="browse-section">Browse through Categories</h2>
 
           <div className="category-grid">
-            <div className="category-directory">
+            <div className="category-directory" >
               <img
                 className="category-image"
                 src="https://joyfoodsunshine.com/wp-content/uploads/2019/01/healthy-greek-yogurt-pancakes-recipe-1.jpg" alt=""

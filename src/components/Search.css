@@ -1,0 +1,31 @@
+.search {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.search-input {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    min-width: 400px;
+    min-height: 40px;
+    color: black;
+    border: none;
+    padding: 5px;
+    font-size: 1.4em;
+}
+
+.search-btn {
+    min-width: 110px;
+    min-height: 40px;
+    font-size: 1.1em;
+    padding: 5px;
+    border: none;
+    background-color: rgb(151, 151, 151);
+}
+
+.search-btn:hover {
+    background-color: orangered;
+    color: white;
+}
