@@ -1,0 +1,66 @@
+.detail-display {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    background-color: whitesmoke;
+    padding: 10px 40px 0 40px;
+    margin-bottom: 50px;
+    border-radius: 12px;
+}
+
+.detail-top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+.colour {
+    color: orangered;
+    font-size: 2em;
+}
+
+.main-directions {
+    display: flex;
+    width: 100%;
+}
+
+.ingredients {
+    width: 50%;
+}
+
+.details-list-info {
+    line-height: 35px;
+}
+
+.details-list {
+    list-style: none;
+}
+
+.directions {
+    width: 50%;
+}
+
+.details-info {
+    width: 60%;
+    line-height: 25px;
+}
+
+.bottom {
+    display: flex;
+    align-self: flex-start;
+    width: 90%;
+    gap: 30px;
+    padding-bottom: 20px;
+}
+
+strong {
+    font-size: 1.6em;
+    color: orangered;
+}
+
+span {
+    font-size: 1.2em;
+    font-weight: 500;
+}

@@ -6,7 +6,7 @@ import Home from "./components/Home";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Recipes from "./components/Recipes";
-// import FetchedData from "./components/Fetch.js";
+import Details from "./components/Details";
 
 
 function App() {
@@ -19,11 +19,9 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/recipes" element={<Recipes />} />
+          <Route path="/details" element={<Details/>} />
         </Routes>
       </BrowserRouter>
-      <div>
-        {/* <FetchedData /> */}
-      </div>
     </div>
   );
 }

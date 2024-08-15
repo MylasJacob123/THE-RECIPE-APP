@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Recipes.css";
-
+import { useNavigate } from "react-router-dom"
 function Recipes() {
   const [recipes, setRecipes] = useState([]);
 
@@ -18,11 +18,15 @@ function Recipes() {
     fetchData();
   }, []);
 
+const navigate = useNavigate();
+
+
+
   return (
     <div className="recipe-grid">
       {recipes.length > 0 ? (
         recipes.map((recipe, index) => (
-          <div key={index} className="card">
+          <div key={index} className="card" onClick={() =>{navigate("/details", {state: recipe})}}>
             <h2>{recipe.category}</h2>
             <h2>{recipe.name}</h2>
             <img
