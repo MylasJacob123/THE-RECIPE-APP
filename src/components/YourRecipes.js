@@ -25,7 +25,7 @@ function YourRecipes({recipe}) {
           <p><strong>Cook Time:</strong> {recipe.cook}</p>
           <p><strong>Serves:</strong> {recipe.serves}</p>
         </div>
-        )}
+        )};
       </div>
   )
 }

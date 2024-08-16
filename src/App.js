@@ -7,6 +7,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Recipes from "./components/Recipes";
 import Details from "./components/Details";
+import AddRecipes from "./components/AddNewRecipes"
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/details" element={<Details/>} />
+          <Route path="/add" element={<AddRecipes/>} />
         </Routes>
       </BrowserRouter>
     </div>

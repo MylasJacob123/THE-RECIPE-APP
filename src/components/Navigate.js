@@ -19,6 +19,9 @@ function Navigate() {
           <li>
             <Link to="/Recipes">Recipes</Link>
           </li>
+          <li>
+            <Link to="/add">Add New Recipes</Link>
+          </li>
         </ul>
       </nav>
     </div>
