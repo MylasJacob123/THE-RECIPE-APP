@@ -28,7 +28,8 @@
       ],
       "prep": "05min",
       "cook": "15min",
-      "serves": "2"
+      "serves": "2",
+      "id": "8bd6"
     },
     {
       "category": "Lunch",
@@ -58,7 +59,8 @@
       ],
       "prep": "05min",
       "cook": "05min",
-      "serves": "1"
+      "serves": "1",
+      "id": "6355"
     },
     {
       "category": "Drink",
@@ -85,7 +87,8 @@
       ],
       "prep": "1h 15m",
       "cook": "05min",
-      "serves": "4"
+      "serves": "4",
+      "id": "7a5b"
     },
     {
       "category": "Dessert",
@@ -144,7 +147,8 @@
       ],
       "prep": "20m",
       "cook": "1h",
-      "serves": "12"
+      "serves": "12",
+      "id": "56b0"
     },
     {
       "category": "Breakfast",
@@ -187,7 +191,8 @@
       ],
       "prep": "10min",
       "cook": "05min",
-      "serves": "4"
+      "serves": "4",
+      "id": "049a"
     },
     {
       "category": "Lunch",
@@ -224,7 +229,8 @@
       ],
       "prep": "15min",
       "cook": "35min",
-      "serves": "4"
+      "serves": "4",
+      "id": "0ea4"
     },
     {
       "category": "Drink",
@@ -252,7 +258,8 @@
       ],
       "prep": "10min",
       "cook": "",
-      "serves": "2"
+      "serves": "2",
+      "id": "452c"
     },
     {
       "category": "Dessert",
@@ -302,7 +309,28 @@
       ],
       "prep": "1h",
       "cook": "1h 30min",
-      "serves": "12"
+      "serves": "12",
+      "id": "6aa4"
+    },
+    {
+      "id": "c03c",
+      "category": "breakfast",
+      "foodName": "Rice",
+      "image": "https://www.onceuponachef.com/images/2014/10/jasmine-rice-1.jpg",
+      "ingredients": [
+        "edas",
+        "hhhhhhhhh",
+        "kkkkkk",
+        "kkyyyyt"
+      ],
+      "directions": [
+        "hhhhh",
+        "jjjjjjj",
+        "kkkkkk"
+      ],
+      "prepTime": "10m",
+      "cookTime": "35m",
+      "serves": "4"
     }
   ]
 }

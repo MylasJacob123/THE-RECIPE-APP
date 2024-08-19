@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./AddNewRecipes.css";
+import axios from "axios";
 
-function AddNewRecipes(props) {
+function AddNewRecipes() {
   const [category, setCategory] = useState("");
   const [foodName, setFoodName] = useState("");
   const [image, setImage] = useState("");
@@ -10,6 +11,7 @@ function AddNewRecipes(props) {
   const [prepTime, setPrepTime] = useState("");
   const [cookTime, setCookTime] = useState("");
   const [serves, setServes] = useState("");
+  const [recipe, setRecipe] = useState([]);
 
   const ingredientsChange = (e) => {
     setIngredients(e.target.value.split("\n"));
@@ -19,29 +21,25 @@ function AddNewRecipes(props) {
     setDirections(e.target.value.split("\n"));
   };
 
-  const Add = () => {
-    props.onAddRecipe({
-      category,
-      foodName,
-      image,
-      ingredients,
-      directions,
-      prepTime,
-      cookTime,
-      serves,
-    });
+  const Add = async () => {
+    let newRecipe = {
+      category: category,
+      foodName: foodName,
+      image: image,
+      ingredients: ingredients,
+      directions: directions,
+      prepTime: prepTime,
+      cookTime: cookTime,
+      serves: serves,
+    }
 
-    setCategory("");
-    setFoodName("");
-    setImage("");
-    setIngredients([]);
-    setDirections([]);
-    setPrepTime("");
-    setCookTime("");
-    setServes("");
-
-    window.alert("The form has been submitted successfully!");
-  };
+    const response = await axios.post("http://localhost:3000/recipes", newRecipe)
+    setRecipe([
+      ...recipe,
+      response.data
+    ])
+    window.alert("Submitted successfully!");
+  }
 
   return (
     <div>
@@ -49,8 +47,8 @@ function AddNewRecipes(props) {
       <div>
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="">Select a category</option>
-          <option value="breakfast">Breakfast</option>
-          <option value="lunch">Lunch</option>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Lunch">Lunch</option>
           <option value="Drink">Drink</option>
           <option value="Dessert">Dessert</option>
         </select>
@@ -127,10 +125,7 @@ function AddNewRecipes(props) {
           alt={foodName}
           style={{ width: "100%", maxWidth: "400px", height: "auto" }}
         />
-        <h4>Category: {category}</h4>
-        <p>Prep Time: {prepTime}</p>
-        <p>Cook Time: {cookTime}</p>
-        <p>Serves: {serves}</p>
+        
         <h4>Ingredients</h4>
         <ul>
           {ingredients.map((item, index) => (
@@ -141,8 +136,19 @@ function AddNewRecipes(props) {
         <ol>
           {directions.map((item, index) => (
             <li key={index}>{item.trim()}</li>
-          ))}
+          ))}  
         </ol>
+        <div class="add-new-recipes-bottom">
+        <p>
+          <strong>Prep Time:</strong> <span>{prepTime}</span>
+        </p>
+        <p>
+          <strong>Cook Time:</strong> <span>{cookTime}</span>
+        </p>
+        <p>
+          <strong>Serves:</strong> <span>{serves}</span>
+        </p>
+      </div>
       </div>
     </div>
   );
