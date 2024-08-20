@@ -47,6 +47,10 @@
     line-height: 25px;
 }
 
+.footer {
+    display: flex;
+}
+
 .bottom {
     display: flex;
     align-self: flex-start;
@@ -63,4 +67,30 @@ strong {
 span {
     font-size: 1.2em;
     font-weight: 500;
+}
+
+.button-section {
+    display: flex;
+    gap: 15px;
+    padding-bottom: 15px;
+}
+
+.update-btn {
+    background-color: grey;
+    border: none;
+    min-width: 120px;
+    min-height: 35px;
+    color: white;
+    border-radius: 6px;
+    font-size: 1.2em;
+}
+
+.delete-btn {
+    background-color: red;
+    border: none;
+    min-width: 120px;
+    min-height: 35px;
+    color: white;
+    border-radius: 6px;
+    font-size: 1.2em;
 }

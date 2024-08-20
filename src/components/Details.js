@@ -1,13 +1,30 @@
 import React from "react";
 import "./Details.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const Details = () => {
+function Details() {
   const location = useLocation();
   const recipe = location.state;
+  const navigate = useNavigate();
+
+  const goToUpdateRecipe = () => {
+    navigate("/update", { state: recipe });
+  };
+
+  const deleteRecipe = () => {
+    axios.delete(`http://localhost:3000/recipes/${recipe.id}`)
+      .then(() => {
+        console.log("Recipe deleted");
+        navigate("/recipes");
+      })
+      .catch((error) => {
+        console.error("Error deleting recipe:", error);
+      });
+  };
 
   return (
-    <div class="detail-display">
+    <div className="detail-display">
       <div className="detail-top">
         <h2 className="colour">{recipe.category}</h2>
         <h2>{recipe.name}</h2>
@@ -22,7 +39,7 @@ const Details = () => {
           }}
         />
       </div>
-      <div class="main-directions">
+      <div className="main-directions">
         <div className="ingredients">
           <h3>Ingredients</h3>
           <ul className="details-list-info">
@@ -33,7 +50,7 @@ const Details = () => {
             ))}
           </ul>
         </div>
-        <div class="ingredients">
+        <div className="ingredients">
           <h3 className="directions">Directions</h3>
           <ol className="details-info">
             {recipe.directions.map((direction, i) => (
@@ -42,19 +59,25 @@ const Details = () => {
           </ol>
         </div>
       </div>
-      <div class="bottom">
-        <p>
-          <strong>Prep Time:</strong> <span>{recipe.prep}</span>{" "}
-        </p>
-        <p>
-          <strong>Cook Time:</strong> <span>{recipe.cook}</span>{" "}
-        </p>
-        <p>
-          <strong>Serves:</strong> <span>{recipe.serves}</span>{" "}
-        </p>
+      <div className="footer">
+        <div className="bottom">
+          <p>
+            <strong>Prep Time:</strong> <span>{recipe.prep}</span>{" "}
+          </p>
+          <p>
+            <strong>Cook Time:</strong> <span>{recipe.cook}</span>{" "}
+          </p>
+          <p>
+            <strong>Serves:</strong> <span>{recipe.serves}</span>{" "}
+          </p>
+        </div>
+        <div className="button-section">
+          <button className="update-btn" onClick={goToUpdateRecipe}>Update</button>
+          <button className="delete-btn" onClick={deleteRecipe}>Delete</button>
+        </div>
       </div>
     </div>
   );
-};
+}
 
 export default Details;

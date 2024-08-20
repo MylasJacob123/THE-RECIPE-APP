@@ -63,34 +63,6 @@
       "id": "6355"
     },
     {
-      "category": "Drink",
-      "name": "Melonade",
-      "image": "https://img.taste.com.au/To2SZZeO/w720-h480-cfill-q80/taste/2022/12/melonade-184025-2.png",
-      "ingredients": [
-        "100g (1/2 cup) caster sugar",
-        "125ml (1/2 cup) water",
-        "1.5kg watermelon, peeled, chopped",
-        "125ml (1/2 cup) strained fresh lemon juice",
-        "1/2 tsp vanilla extract",
-        "Ice cubes, to serve",
-        "Fresh mint leaves, to serve"
-      ],
-      "directions": [
-        "Combine the sugar and water in a small saucepan.",
-        "Stir over low heat until sugar has dissolved.",
-        "Increase heat to medium-low and simmer without stirring, for 5 minutes.",
-        "Transfer to a bowl and place in the fridge until chilled.",
-        "IPlace the watermelon in a food processor and process until smooth.",
-        "Strain through a sieve into a large jug to remove any seeds and fibrous pulp.",
-        "Pour the lemon juice, vanilla and chilled sugar syrup into the jug and stir until combined",
-        "Serve over ice with mint."
-      ],
-      "prep": "1h 15m",
-      "cook": "05min",
-      "serves": "4",
-      "id": "7a5b"
-    },
-    {
       "category": "Dessert",
       "name": "Banoffee dessert cake",
       "image": "https://img.taste.com.au/DglEC8e6/w720-h480-cfill-q80/taste/2020/01/banoffee-dessert-cake-158047-1.jpg",
@@ -313,24 +285,25 @@
       "id": "6aa4"
     },
     {
-      "id": "c03c",
-      "category": "breakfast",
-      "foodName": "Rice",
-      "image": "https://www.onceuponachef.com/images/2014/10/jasmine-rice-1.jpg",
+      "id": "acdc",
+      "category": "Drink",
+      "foodName": "Pine Juice",
+      "image": "https://img.freepik.com/premium-photo/pineapple-juice-with-splashes-with-pineapple-fruit-studio-background-restaurant-with-garden_741910-7982.jpg",
       "ingredients": [
-        "edas",
-        "hhhhhhhhh",
-        "kkkkkk",
-        "kkyyyyt"
+        "84% water",
+        "16% carbohydrates",
+        "contains negligible fat and protein"
       ],
       "directions": [
-        "hhhhh",
-        "jjjjjjj",
-        "kkkkkk"
+        "Cut the top and bottom off the pineapple",
+        "Similar to how you sliced off the peel, cut a thin strip off the outside of the pineapple, no more than ½ inch thick.",
+        "Once the core is left, place it on the cutting board horizontally.",
+        "Juice each slice of pineapple.",
+        "Juice the core pieces."
       ],
-      "prepTime": "10m",
-      "cookTime": "35m",
-      "serves": "4"
+      "prepTime": "15min",
+      "cookTime": "25min",
+      "serves": "2"
     }
   ]
 }

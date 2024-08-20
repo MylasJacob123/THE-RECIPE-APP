@@ -7,7 +7,8 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Recipes from "./components/Recipes";
 import Details from "./components/Details";
-import AddRecipes from "./components/AddNewRecipes"
+import AddRecipes from "./components/AddNewRecipes";
+import Update from "./components/UpdateRecipe"
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/details" element={<Details/>} />
           <Route path="/add" element={<AddRecipes/>} />
+          <Route path="/update" element={<Update/>} />
         </Routes>
       </BrowserRouter>
     </div>
