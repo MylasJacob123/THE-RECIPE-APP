@@ -12,6 +12,7 @@ function AddNewRecipes() {
   const [cookTime, setCookTime] = useState("");
   const [serves, setServes] = useState("");
   const [recipe, setRecipe] = useState([]);
+  const [errors, setErrors] = useState({});
 
   const ingredientsChange = (e) => {
     setIngredients(e.target.value.split("\n"));
@@ -21,29 +22,77 @@ function AddNewRecipes() {
     setDirections(e.target.value.split("\n"));
   };
 
-  const Add = async () => {
-    let newRecipe = {
-      category: category,
-      foodName: foodName,
-      image: image,
-      ingredients: ingredients,
-      directions: directions,
-      prepTime: prepTime,
-      cookTime: cookTime,
-      serves: serves,
-    };
+  const validate = () => {
+    let errors = {};
 
-    const response = await axios.post(
-      "http://localhost:3000/recipes",
-      newRecipe
-    );
-    setRecipe([...recipe, response.data]);
-    window.alert("Submitted successfully!");
+    if (!category) {
+      errors.category = "Please choose a category.";
+    }
+
+    if (!foodName.match(/^[A-Z][a-zA-Z\s]*$/g)) {
+      errors.foodName = "Start with a capital letter and no numbers or symbols";
+    }
+
+    if (!image.match(/^https?:\/\/.+\.(jpg|jpeg|png|gif)$/i)) {
+      errors.image = "Enter a valid image URL (e.g., .jpg, .jpeg, .png, .gif)";
+    }
+
+    if (ingredients.some(item => !item.trim().match(/^[a-zA-Z\s]+$/))) {
+      errors.ingredients = "Ingredients should only contain letters and spaces, and each ingredient should be on a new line.";
+    }
+
+    if (directions.some(item => !item.trim().match(/^[a-zA-Z0-9\s,.]+$/))) {
+      errors.directions = "Directions should be on a new line and should not contain symbols";
+    }
+
+    if (!prepTime.match(/^\d+$/)) {
+      errors.prepTime = "Numbers only";
+    }
+
+    if (!cookTime.match(/^\d+$/)) {
+      errors.cookTime = "Numbers only";
+    }
+
+    if (!serves.match(/^\d+$/)) {
+      errors.serves = "Numbers only";
+    }
+
+    return errors;
+  };
+
+  const Add = async () => {
+    const errors = validate();
+
+    if (Object.keys(errors).length === 0) {
+      let newRecipe = {
+        category: category,
+        foodName: foodName,
+        image: image,
+        ingredients: ingredients,
+        directions: directions,
+        prepTime: prepTime,
+        cookTime: cookTime,
+        serves: serves,
+      };
+
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/recipes",
+          newRecipe
+        );
+        setRecipe([...recipe, response.data]);
+        window.alert("Submitted successfully!");
+      } catch (error) {
+        window.alert("Submission failed. Please try again.");
+      }
+    } else {
+      setErrors(errors);
+    }
   };
 
   return (
     <div className="addition">
-      <div class="addition-section-A">
+      <div className="addition-section-A">
         <h1 className="addition-heading">Add New Recipes</h1>
         <div>
           <select
@@ -57,6 +106,7 @@ function AddNewRecipes() {
             <option value="Drink">Drink</option>
             <option value="Dessert">Dessert</option>
           </select>
+          {errors.category && <p className="error">{errors.category}</p>}
         </div>
         <div>
           <input
@@ -68,6 +118,7 @@ function AddNewRecipes() {
             value={foodName}
             onChange={(e) => setFoodName(e.target.value)}
           />
+          {errors.foodName && <p className="error">{errors.foodName}</p>}
         </div>
         <div>
           <input
@@ -78,6 +129,7 @@ function AddNewRecipes() {
             value={image}
             onChange={(e) => setImage(e.target.value)}
           />
+          {errors.image && <p className="error">{errors.image}</p>}
         </div>
         <div>
           <textarea
@@ -86,6 +138,7 @@ function AddNewRecipes() {
             placeholder="Enter ingredients, one per line"
             onChange={ingredientsChange}
           />
+          {errors.ingredients && <p className="error">{errors.ingredients}</p>}
         </div>
         <div>
           <textarea
@@ -94,6 +147,7 @@ function AddNewRecipes() {
             placeholder="Enter directions, one per line"
             onChange={directionsChange}
           />
+          {errors.directions && <p className="error">{errors.directions}</p>}
         </div>
         <div>
           <input
@@ -104,6 +158,7 @@ function AddNewRecipes() {
             value={prepTime}
             onChange={(e) => setPrepTime(e.target.value)}
           />
+          {errors.prepTime && <p className="error">{errors.prepTime}</p>}
         </div>
         <div>
           <input
@@ -114,6 +169,7 @@ function AddNewRecipes() {
             value={cookTime}
             onChange={(e) => setCookTime(e.target.value)}
           />
+          {errors.cookTime && <p className="error">{errors.cookTime}</p>}
         </div>
         <div>
           <input
@@ -124,6 +180,7 @@ function AddNewRecipes() {
             value={serves}
             onChange={(e) => setServes(e.target.value)}
           />
+          {errors.serves && <p className="error">{errors.serves}</p>}
         </div>
         <div>
           <button className="addition-button" onClick={Add}>

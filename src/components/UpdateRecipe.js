@@ -9,20 +9,65 @@ function UpdateRecipe() {
   const recipe = location.state;
 
   const [editData, setEditData] = useState(recipe);
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     setEditData(recipe);
   }, [recipe]);
 
+  const validate = () => {
+    let errors = {};
+
+    if (!editData.category) {
+      errors.category = "Please choose a category.";
+    }
+
+    if (!editData.name.match(/^[A-Z][a-zA-Z\s]*$/)) {
+      errors.name = "Food name must start with a capital letter and contain no numbers or symbols.";
+    }
+
+    if (!editData.image.match(/^https?:\/\/.+\.(jpg|jpeg|png|gif)$/i)) {
+      errors.image = "Please enter a valid image URL (e.g., .jpg, .jpeg, .png, .gif).";
+    }
+
+    if (editData.ingredients.some(item => !item.trim().match(/^[a-zA-Z\s]+$/))) {
+      errors.ingredients = "Ingredients should only contain letters and spaces, and each ingredient should be on a new line.";
+    }
+
+    if (editData.directions.some(item => !item.trim().match(/^[a-zA-Z0-9\s,.]+$/))) {
+      errors.directions = "Directions should be on a new line and should not contain symbols.";
+    }
+
+    if (!editData.prep.match(/^\d+$/)) {
+      errors.prep = "Prep time should only contain numbers.";
+    }
+
+    if (!editData.cook.match(/^\d+$/)) {
+      errors.cook = "Cook time should only contain numbers.";
+    }
+
+    if (!editData.serves.match(/^\d+$/)) {
+      errors.serves = "Serves should only contain numbers.";
+    }
+
+    return errors;
+  };
+
   const handleUpdate = () => {
-    axios.put(`http://localhost:3000/recipes/${recipe.id}`, editData)
-      .then(() => {
-        console.log("Recipe updated");
-        navigate("/recipes");
-      })
-      .catch((error) => {
-        console.error("Error updating recipe:", error);
-      });
+    const errors = validate();
+
+    if (Object.keys(errors).length === 0) {
+      axios.put(`http://localhost:3000/recipes/${recipe.id}`, editData)
+        .then(() => {
+          console.log("Recipe updated");
+          navigate("/recipes");
+        })
+        .catch((error) => {
+          console.error("Error updating recipe:", error);
+        });
+    } else {
+      setErrors(errors);
+    }
   };
 
   const handleCancel = () => {
@@ -60,6 +105,7 @@ function UpdateRecipe() {
           <option value="Drink">Drink</option>
           <option value="Dessert">Dessert</option>
         </select>
+        {errors.category && <p className="update-error">{errors.category}</p>}
       </div>
       <div>
         <input
@@ -70,6 +116,7 @@ function UpdateRecipe() {
           value={editData.name || ''}
           onChange={handleInputChange}
         />
+        {errors.name && <p className="update-error">{errors.name}</p>}
       </div>
       <div>
         <input
@@ -80,6 +127,7 @@ function UpdateRecipe() {
           value={editData.image || ''}
           onChange={handleInputChange}
         />
+        {errors.image && <p className="update-error">{errors.image}</p>}
       </div>
       <div>
         <textarea
@@ -89,6 +137,7 @@ function UpdateRecipe() {
           value={editData.ingredients?.join('\n') || ''}
           onChange={handleIngredientsChange}
         />
+        {errors.ingredients && <p className="update-error">{errors.ingredients}</p>}
       </div>
       <div>
         <textarea
@@ -98,6 +147,7 @@ function UpdateRecipe() {
           value={editData.directions?.join('\n') || ''}
           onChange={handleDirectionsChange}
         />
+        {errors.directions && <p className="update-error">{errors.directions}</p>}
       </div>
       <div>
         <input
@@ -108,6 +158,7 @@ function UpdateRecipe() {
           value={editData.prep || ''}
           onChange={handleInputChange}
         />
+        {errors.prep && <p className="update-error">{errors.prep}</p>}
       </div>
       <div>
         <input
@@ -118,6 +169,7 @@ function UpdateRecipe() {
           value={editData.cook || ''}
           onChange={handleInputChange}
         />
+        {errors.cook && <p className="update-error">{errors.cook}</p>}
       </div>
       <div>
         <input
@@ -128,6 +180,7 @@ function UpdateRecipe() {
           value={editData.serves || ''}
           onChange={handleInputChange}
         />
+        {errors.serves && <p className="update-error">{errors.serves}</p>}
       </div>
       <div className="btn-section">
         <button className="update-button" onClick={handleUpdate}>Update</button>

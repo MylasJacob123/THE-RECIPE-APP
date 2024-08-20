@@ -43,7 +43,7 @@
     text-align: center;
     font-size: 1.3em;
     min-width: 390px;
-    min-height: 40px;
+    min-height: 130px;
     border: none;
     border-radius: 5px;
     background-color: white;
@@ -74,4 +74,11 @@
 
 .addition-section-B-subheadings {
     font-size: 1.3em;
+}
+
+.error {
+    display: flex;
+    justify-content: center;
+    color: red;
+    min-width: 60px;
 }
