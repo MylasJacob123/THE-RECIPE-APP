@@ -19,6 +19,12 @@ function Navigate({ isLogged, loggedOut }) {
           <li>
             <Link to="/">Home</Link>
           </li>
+          <li>
+            <Link to="/recipes">Recipes</Link>
+          </li>
+          <li>
+            <Link to="/add">Add New Recipes</Link>
+          </li>
           {isLogged ? (
             <>
               <li className="username">
@@ -38,12 +44,6 @@ function Navigate({ isLogged, loggedOut }) {
               </li>
             </>
           )}
-          <li>
-            <Link to="/recipes">Recipes</Link>
-          </li>
-          <li>
-            <Link to="/add">Add New Recipes</Link>
-          </li>
         </ul>
       </nav>
     </div>
