@@ -38,24 +38,25 @@ function AddNewRecipes() {
     }
 
     if (ingredients.some(item => !item.trim().match(/^[a-zA-Z\s]+$/))) {
-      errors.ingredients = "Ingredients should only contain letters and spaces, and each ingredient should be on a new line.";
+      errors.ingredients = "Ingredients should contain only letters and spaces.";
     }
-
-    if (directions.some(item => !item.trim().match(/^[a-zA-Z0-9\s,.]+$/))) {
-      errors.directions = "Directions should be on a new line and should not contain symbols";
+    
+    if (directions.some(item => !item.trim().match(/^[a-zA-Z0-9\s,.!@#$%^&*()_+-=]+$/))) {
+      errors.directions = "Directions can contain letters, numbers, spaces, and common symbols.";
     }
-
-    if (!prepTime.match(/^\d+$/)) {
-      errors.prepTime = "Numbers only";
+    
+    if (!prepTime.match(/^[a-zA-Z0-9\s]+$/)) {
+      errors.prepTime = "Preparation time can contain letters, numbers, and spaces.";
     }
-
-    if (!cookTime.match(/^\d+$/)) {
-      errors.cookTime = "Numbers only";
+    
+    if (!cookTime.match(/^[a-zA-Z0-9\s]+$/)) {
+      errors.cookTime = "Cooking time can contain letters, numbers, and spaces.";
     }
-
-    if (!serves.match(/^\d+$/)) {
-      errors.serves = "Numbers only";
+    
+    if (!serves.match(/^[a-zA-Z0-9\s]+$/)) {
+      errors.serves = "Servings can contain letters, numbers, and spaces.";
     }
+    
 
     return errors;
   };

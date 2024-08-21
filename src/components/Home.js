@@ -15,7 +15,7 @@ function Home() {
         <div className="info">
           <h1 className="HEADING">Come and explore delicious recipes</h1>
           <p className="PARA">
-            Discover new flavors and cooking techniques that are guaranteed to upgrade your
+            Discover new flavors and cooking techniques that are guaranteed to enhance your
             cooking repertoire
           </p>
           <button className="browse" onClick={() => goToRecipes("")}>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Register.css";
 import { useNavigate } from "react-router-dom";
 
-function Register() {
+function Register({ loggedIn }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,8 +16,8 @@ function Register() {
     if (!username) {
       alert("Please enter your username");
       return false;
-    } else if (!/^[A-Za-z][A-Za-z0-9]{4,13}[!@#$%^&*]{2,}$/.test(username)) {
-      alert("Invalid username");
+    } else if (!/^[A-Z][a-zA-Z0-9]*\d+$/g.test(username)) {
+      alert("Invalid username. It must start with a capital letter and contain at least one number.");
       return false;
     }
 
@@ -33,9 +33,7 @@ function Register() {
       alert("Please enter your password");
       return false;
     } else if (!/(?=.*\d)(?=.*[!@#$%^&*])/.test(password)) {
-      alert(
-        "Password must contain at least one digit and one special character"
-      );
+      alert("Password must contain at least one digit and one special character");
       return false;
     }
 
@@ -44,66 +42,66 @@ function Register() {
 
   const navigate = useNavigate();
 
-  const goToHome = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
     if (validate()) {
+      const user = {
+        username,
+        email,
+        password,
+      };
+      localStorage.setItem("user", JSON.stringify(user));
+      loggedIn(); // Update the logged-in state
       navigate("/");
     }
   };
 
   const goToLogin = () => {
-    navigate("/Login");
+    navigate("/login");
   };
 
   return (
     <div className="register">
-      <div class="vid">
+      <div className="vid">
         <video className="logo-video-gif" autoPlay muted loop>
           <source
             src="https://cdnl.iconscout.com/lottie/premium/preview-watermark/meal-8820888-7140050.mp4"
             type="video/mp4"
-          ></source>
+          />
           Your browser does not support the video tag.
         </video>
       </div>
       <h3 className="register-text">COOKING WITH LEPS</h3>
-
       <form className="register-form">
-        <h1 className="register-HEADING">Register</h1>
+        <h1 className="register-heading">Register</h1>
         <div className="fieldset-register">
           <input
             className="register-input"
             type="text"
             placeholder="Username"
-            name="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-
         <div className="fieldset-register">
           <input
             className="register-input"
             type="email"
             placeholder="Email"
-            name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-
         <div className="fieldset-register">
           <input
             className="register-input"
             type="password"
             placeholder="Password"
-            name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-
-        <button className="register-btn" onClick={goToHome}>
+        <button className="register-btn" onClick={handleRegister}>
           Register
         </button>
         <div>
