@@ -50,49 +50,51 @@ function Recipes() {
       <div className="search">
         <Search onSearch={handleSearch} />
       </div>
-      <div className="recipe-grid">
-        {filteredRecipes.length > 0 ? (
-          filteredRecipes.map((recipe, index) => (
-            <div
-              key={index}
-              className="card"
-              onClick={() => {
-                navigate("/details", { state: recipe });
-              }}
-            >
-              <h2>{recipe.category}</h2>
-              <h2>{recipe.name}</h2>
-              <img
-                src={recipe.image}
-                alt={recipe.name}
-                style={{ width: "100%", maxWidth: "400px", height: "auto" }}
-              />
-              <h3>Ingredients</h3>
-              <ul className="ingredients">
-                {recipe.ingredients.map((ingredient, i) => (
-                  <li key={i}>{ingredient}</li>
-                ))}
-              </ul>
-              <h3>Directions</h3>
-              <ol>
-                {recipe.directions.map((direction, i) => (
-                  <li key={i}>{direction}</li>
-                ))}
-              </ol>
-              <p>
-                <strong>Prep Time:</strong> {recipe.prep}
-              </p>
-              <p>
-                <strong>Cook Time:</strong> {recipe.cook}
-              </p>
-              <p>
-                <strong>Serves:</strong> {recipe.serves}
-              </p>
-            </div>
-          ))
-        ) : (
-          <p>No recipes found.</p>
-        )}
+      <div class="grid-body">
+        <div className="recipe-grid">
+          {filteredRecipes.length > 0 ? (
+            filteredRecipes.map((recipe, index) => (
+              <div
+                key={index}
+                className="card"
+                onClick={() => {
+                  navigate("/details", { state: recipe });
+                }}
+              >
+                <h2>{recipe.category}</h2>
+                <h2>{recipe.name}</h2>
+                <img
+                  src={recipe.image}
+                  alt={recipe.name}
+                  style={{ width: "100%", maxWidth: "400px", height: "auto" }}
+                />
+                {/* <h3>Ingredients</h3>
+                <ul className="ingredients">
+                  {recipe.ingredients.map((ingredient, i) => (
+                    <li key={i}>{ingredient}</li>
+                  ))}
+                </ul>
+                <h3>Directions</h3>
+                <ol>
+                  {recipe.directions.map((direction, i) => (
+                    <li key={i}>{direction}</li>
+                  ))}
+                </ol> */}
+                <p>
+                  <span>Prep Time:</span> {recipe.prep}
+                </p>
+                <p>
+                  <span>Cook Time:</span> {recipe.cook}
+                </p>
+                <p>
+                  <span>Serves:</span> {recipe.serves}
+                </p>
+              </div>
+            ))
+          ) : (
+            <p>No recipes found.</p>
+          )}
+        </div>
       </div>
     </div>
   );

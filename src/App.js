@@ -21,7 +21,6 @@ function App() {
     setIsLogged(true);
   };
 
-  // Check login status on component mount
   useEffect(() => {
     setIsLogged(!!localStorage.getItem("user"));
   }, []);

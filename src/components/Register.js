@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Register.css";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Register({ loggedIn }) {
   const [username, setUsername] = useState("");
@@ -14,26 +15,50 @@ function Register({ loggedIn }) {
 
   const validate = () => {
     if (!username) {
-      alert("Please enter your username");
+      Swal.fire({
+        icon: "warning",
+        title: "Invalid Username",
+        text: "Please enter your username.",
+      });
       return false;
-    } else if (!/^[A-Z][a-zA-Z0-9]*\d+$/g.test(username)) {
-      alert("Invalid username. It must start with a capital letter and contain at least one number.");
+    } else if (username.length < 6) {
+      Swal.fire({
+        icon: "warning",
+        title: "Invalid Username",
+        text: "Username must be at least 6 characters long.",
+      });
       return false;
     }
 
     if (!email) {
-      alert("Please enter your email");
+      Swal.fire({
+        icon: "warning",
+        title: "Invalid Email",
+        text: "Please enter your email.",
+      });
       return false;
     } else if (!validateEmail(email)) {
-      alert("Invalid email");
+      Swal.fire({
+        icon: "warning",
+        title: "Invalid Email",
+        text: "Please enter a valid email address.",
+      });
       return false;
     }
 
     if (!password) {
-      alert("Please enter your password");
+      Swal.fire({
+        icon: "warning",
+        title: "Invalid Password",
+        text: "Please enter your password.",
+      });
       return false;
-    } else if (!/(?=.*\d)(?=.*[!@#$%^&*])/.test(password)) {
-      alert("Password must contain at least one digit and one special character");
+    } else if (password.length < 6) {
+      Swal.fire({
+        icon: "warning",
+        title: "Invalid Password",
+        text: "Password must be at least 6 characters long.",
+      });
       return false;
     }
 
@@ -45,14 +70,24 @@ function Register({ loggedIn }) {
   const handleRegister = (e) => {
     e.preventDefault();
     if (validate()) {
-      const user = {
+      const newUser = {
         username,
         email,
         password,
       };
-      localStorage.setItem("user", JSON.stringify(user));
-      loggedIn(); // Update the logged-in state
-      navigate("/");
+
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      users.push(newUser);
+      localStorage.setItem("users", JSON.stringify(users));
+
+      Swal.fire({
+        icon: "success",
+        title: "Registration Successful",
+        text: "Your account has been created!",
+      }).then(() => {
+        loggedIn();
+        navigate("/");
+      });
     }
   };
 
@@ -81,6 +116,7 @@ function Register({ loggedIn }) {
             placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            required
           />
         </div>
         <div className="fieldset-register">
@@ -90,6 +126,7 @@ function Register({ loggedIn }) {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
         <div className="fieldset-register">
@@ -99,6 +136,7 @@ function Register({ loggedIn }) {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
         <button className="register-btn" onClick={handleRegister}>

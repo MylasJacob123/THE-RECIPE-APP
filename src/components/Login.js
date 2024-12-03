@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Login({ loggedIn }) {
   const [email, setEmail] = useState("");
@@ -14,18 +15,27 @@ function Login({ loggedIn }) {
 
   const validate = () => {
     if (!email) {
-      alert("Please enter your email");
+      Swal.fire({
+        icon: "warning",
+        title: "Missing Email",
+        text: "Please enter your email.",
+      });
       return false;
     } else if (!validateEmail(email)) {
-      alert("Invalid email");
+      Swal.fire({
+        icon: "error",
+        title: "Invalid Email",
+        text: "Please enter a valid email address.",
+      });
       return false;
     }
 
     if (!password) {
-      alert("Please enter your password");
-      return false;
-    } else if (!/(?=.*\d)(?=.*[!@#$%^&*])/.test(password)) {
-      alert("Password must contain at least one digit and one special character");
+      Swal.fire({
+        icon: "warning",
+        title: "Missing Password",
+        text: "Please enter your password.",
+      });
       return false;
     }
 
@@ -35,14 +45,27 @@ function Login({ loggedIn }) {
   const handleLogin = (e) => {
     e.preventDefault();
     if (validate()) {
-      const storedUser = JSON.parse(localStorage.getItem("user"));
-      
-      if (storedUser && storedUser.email === email && storedUser.password === password) {
-        alert("Login successful!");
-        loggedIn(); // Update logged-in state
-        navigate("/");
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const user = users.find(
+        (user) => user.email === email && user.password === password
+      );
+
+      if (user) {
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          text: `Welcome back, ${user.username}!`,
+        }).then(() => {
+          localStorage.setItem("user", JSON.stringify(user));
+          loggedIn();
+          navigate("/");
+        });
       } else {
-        alert("Invalid email or password");
+        Swal.fire({
+          icon: "error",
+          title: "Login Failed",
+          text: "The email or password you entered is incorrect.",
+        });
       }
     }
   };

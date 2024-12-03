@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import "./Navigate.css";
 
 function Navigate({ isLogged, loggedOut }) {
@@ -7,9 +8,23 @@ function Navigate({ isLogged, loggedOut }) {
   const user = JSON.parse(localStorage.getItem("user"));
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
-    loggedOut(); // Update the logged-in state in the parent component
-    navigate("/");
+    Swal.fire({
+      title: "Are you sure you want to log out?",
+      text: "You will need to log in again to access your account.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, log out",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("user");
+        loggedOut();
+        Swal.fire("Logged Out", "You have been logged out successfully.", "success").then(() => {
+          navigate("/");
+        });
+      }
+    });
   };
 
   return (
@@ -22,25 +37,25 @@ function Navigate({ isLogged, loggedOut }) {
           <li>
             <Link to="/recipes">Recipes</Link>
           </li>
-          <li>
-            <Link to="/add">Add New Recipes</Link>
-          </li>
           {isLogged ? (
             <>
-              <li className="username">
-                Welcome, {user?.username}!
+              <li className="username">Welcome, {user?.username}!</li>
+              <li>
+                <Link to="/add">Add New Recipes</Link>
               </li>
               <li>
-                <button className="logout" onClick={handleLogout}>Logout</button>
+                <button className="logout" onClick={handleLogout}>
+                  Logout
+                </button>
               </li>
             </>
           ) : (
             <>
               <li>
-                <Link to="/register">Register</Link>
+                <Link to="/login">Login</Link>
               </li>
               <li>
-                <Link to="/login">Login</Link>
+                <Link to="/register">Register</Link>
               </li>
             </>
           )}

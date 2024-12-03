@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
 import "./UpdateRecipe.css";
 
 function UpdateRecipe() {
@@ -30,11 +31,11 @@ function UpdateRecipe() {
       errors.image = "Please enter a valid image URL (e.g., .jpg, .jpeg, .png, .gif).";
     }
 
-    if (editData.ingredients.some(item => !item.trim().match(/^[a-zA-Z\s]+$/))) {
+    if (editData.ingredients.some((item) => !item.trim().match(/^[a-zA-Z\s]+$/))) {
       errors.ingredients = "Ingredients should only contain letters and spaces, and each ingredient should be on a new line.";
     }
 
-    if (editData.directions.some(item => !item.trim().match(/^[a-zA-Z0-9\s,.]+$/))) {
+    if (editData.directions.some((item) => !item.trim().match(/^[a-zA-Z0-9\s,.]+$/))) {
       errors.directions = "Directions should be on a new line and should not contain symbols.";
     }
 
@@ -57,21 +58,49 @@ function UpdateRecipe() {
     const errors = validate();
 
     if (Object.keys(errors).length === 0) {
-      axios.put(`http://localhost:3000/recipes/${recipe.id}`, editData)
-        .then(() => {
-          console.log("Recipe updated");
-          navigate("/recipes");
-        })
-        .catch((error) => {
-          console.error("Error updating recipe:", error);
-        });
+      Swal.fire({
+        title: "Are you sure you want to update this recipe?",
+        text: "Changes will be saved permanently.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, update it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .put(`http://localhost:3000/recipes/${recipe.id}`, editData)
+            .then(() => {
+              Swal.fire("Updated!", "Your recipe has been updated.", "success").then(() => {
+                navigate("/recipes");
+              });
+            })
+            .catch((error) => {
+              console.error("Error updating recipe:", error);
+              Swal.fire("Error!", "There was an error updating the recipe. Please try again.", "error");
+            });
+        }
+      });
     } else {
       setErrors(errors);
+      Swal.fire("Validation Error", "Please correct the errors in the form.", "error");
     }
   };
 
   const handleCancel = () => {
-    navigate("/recipes");
+    Swal.fire({
+      title: "Are you sure you want to cancel?",
+      text: "All unsaved changes will be lost.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, cancel",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/recipes");
+      }
+    });
   };
 
   const handleInputChange = (event) => {
@@ -80,12 +109,12 @@ function UpdateRecipe() {
   };
 
   const handleIngredientsChange = (event) => {
-    const ingredients = event.target.value.split('\n');
+    const ingredients = event.target.value.split("\n");
     setEditData({ ...editData, ingredients });
   };
 
   const handleDirectionsChange = (event) => {
-    const directions = event.target.value.split('\n');
+    const directions = event.target.value.split("\n");
     setEditData({ ...editData, directions });
   };
 
@@ -96,7 +125,7 @@ function UpdateRecipe() {
         <select
           className="update-selector"
           name="category"
-          value={editData.category || ''}
+          value={editData.category || ""}
           onChange={handleInputChange}
         >
           <option value="">Select a category</option>
@@ -113,7 +142,7 @@ function UpdateRecipe() {
           type="text"
           name="name"
           placeholder="Food Name"
-          value={editData.name || ''}
+          value={editData.name || ""}
           onChange={handleInputChange}
         />
         {errors.name && <p className="update-error">{errors.name}</p>}
@@ -124,7 +153,7 @@ function UpdateRecipe() {
           type="text"
           name="image"
           placeholder="Image URL"
-          value={editData.image || ''}
+          value={editData.image || ""}
           onChange={handleInputChange}
         />
         {errors.image && <p className="update-error">{errors.image}</p>}
@@ -134,7 +163,7 @@ function UpdateRecipe() {
           className="update-textarea"
           name="ingredients"
           placeholder="Enter ingredients, one per line"
-          value={editData.ingredients?.join('\n') || ''}
+          value={editData.ingredients?.join("\n") || ""}
           onChange={handleIngredientsChange}
         />
         {errors.ingredients && <p className="update-error">{errors.ingredients}</p>}
@@ -144,7 +173,7 @@ function UpdateRecipe() {
           className="update-textarea"
           name="directions"
           placeholder="Enter directions, one per line"
-          value={editData.directions?.join('\n') || ''}
+          value={editData.directions?.join("\n") || ""}
           onChange={handleDirectionsChange}
         />
         {errors.directions && <p className="update-error">{errors.directions}</p>}
@@ -155,7 +184,7 @@ function UpdateRecipe() {
           type="text"
           name="prep"
           placeholder="Prep Time"
-          value={editData.prep || ''}
+          value={editData.prep || ""}
           onChange={handleInputChange}
         />
         {errors.prep && <p className="update-error">{errors.prep}</p>}
@@ -166,7 +195,7 @@ function UpdateRecipe() {
           type="text"
           name="cook"
           placeholder="Cook Time"
-          value={editData.cook || ''}
+          value={editData.cook || ""}
           onChange={handleInputChange}
         />
         {errors.cook && <p className="update-error">{errors.cook}</p>}
@@ -177,7 +206,7 @@ function UpdateRecipe() {
           type="text"
           name="serves"
           placeholder="Serves"
-          value={editData.serves || ''}
+          value={editData.serves || ""}
           onChange={handleInputChange}
         />
         {errors.serves && <p className="update-error">{errors.serves}</p>}

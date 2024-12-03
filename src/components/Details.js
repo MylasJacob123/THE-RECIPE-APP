@@ -2,6 +2,7 @@ import React from "react";
 import "./Details.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function Details() {
   const location = useLocation();
@@ -13,14 +14,32 @@ function Details() {
   };
 
   const deleteRecipe = () => {
-    axios.delete(`http://localhost:3000/recipes/${recipe.id}`)
-      .then(() => {
-        console.log("Recipe deleted");
-        navigate("/recipes");
-      })
-      .catch((error) => {
-        console.error("Error deleting recipe:", error);
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This will permanently delete the recipe.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`http://localhost:3000/recipes/${recipe.id}`)
+          .then(() => {
+            Swal.fire("Deleted!", "Your recipe has been deleted.", "success");
+            navigate("/recipes");
+          })
+          .catch((error) => {
+            Swal.fire(
+              "Error",
+              "There was an issue deleting the recipe. Please try again.",
+              "error"
+            );
+            console.error("Error deleting recipe:", error);
+          });
+      }
+    });
   };
 
   return (

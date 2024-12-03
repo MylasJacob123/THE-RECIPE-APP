@@ -45,6 +45,7 @@ body {
   
   .card h2 {
     font-size: 1.2em;
+    font-weight: 400;
     margin-bottom: 8px;
     color: orangered;
   }

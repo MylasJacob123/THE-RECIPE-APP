@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./AddNewRecipes.css";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function AddNewRecipes() {
   const [category, setCategory] = useState("");
@@ -25,38 +26,52 @@ function AddNewRecipes() {
   const validate = () => {
     let errors = {};
 
+    setErrors({});
+
     if (!category) {
       errors.category = "Please choose a category.";
     }
 
     if (!foodName.match(/^[A-Z][a-zA-Z\s]*$/g)) {
-      errors.foodName = "Start with a capital letter and no numbers or symbols";
+      errors.foodName = "Start with a capital letter and no numbers or symbols.";
     }
 
     if (!image.match(/^https?:\/\/.+\.(jpg|jpeg|png|gif)$/i)) {
-      errors.image = "Enter a valid image URL (e.g., .jpg, .jpeg, .png, .gif)";
+      errors.image = "Enter a valid image URL (e.g., .jpg, .jpeg, .png, .gif).";
     }
 
-    if (ingredients.some(item => !item.trim().match(/^[a-zA-Z\s]+$/))) {
-      errors.ingredients = "Ingredients should contain only letters and spaces.";
+    if (
+      ingredients.some(
+        (item) =>
+          !item.trim().match(/^[a-zA-Z0-9\s,.!@#$%^&*()_+-=]+$/)
+      )
+    ) {
+      errors.ingredients =
+        "Ingredients can contain letters, numbers, spaces, and common symbols.";
     }
-    
-    if (directions.some(item => !item.trim().match(/^[a-zA-Z0-9\s,.!@#$%^&*()_+-=]+$/))) {
-      errors.directions = "Directions can contain letters, numbers, spaces, and common symbols.";
+
+    if (
+      directions.some(
+        (item) =>
+          !item.trim().match(/^[a-zA-Z0-9\s,.!@#$%^&*()_+-=]+$/)
+      )
+    ) {
+      errors.directions =
+        "Directions can contain letters, numbers, spaces, and common symbols.";
     }
-    
+
     if (!prepTime.match(/^[a-zA-Z0-9\s]+$/)) {
-      errors.prepTime = "Preparation time can contain letters, numbers, and spaces.";
+      errors.prepTime =
+        "Preparation time can contain letters, numbers, and spaces.";
     }
-    
+
     if (!cookTime.match(/^[a-zA-Z0-9\s]+$/)) {
       errors.cookTime = "Cooking time can contain letters, numbers, and spaces.";
     }
-    
+
     if (!serves.match(/^[a-zA-Z0-9\s]+$/)) {
       errors.serves = "Servings can contain letters, numbers, and spaces.";
     }
-    
 
     return errors;
   };
@@ -82,12 +97,26 @@ function AddNewRecipes() {
           newRecipe
         );
         setRecipe([...recipe, response.data]);
-        window.alert("Submitted successfully!");
+
+        Swal.fire({
+          icon: "success",
+          title: "Recipe Added",
+          text: "Your recipe has been successfully added!",
+        });
       } catch (error) {
-        window.alert("Submission failed. Please try again.");
+        Swal.fire({
+          icon: "error",
+          title: "Submission Failed",
+          text: "There was an error adding your recipe. Please try again.",
+        });
       }
     } else {
       setErrors(errors);
+      Swal.fire({
+        icon: "warning",
+        title: "Validation Error",
+        text: "Please correct the highlighted fields and try again.",
+      });
     }
   };
 
