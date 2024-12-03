@@ -49,6 +49,11 @@ body {
     margin-bottom: 8px;
     color: orangered;
   }
+
+  .category {
+    text-align: left;
+    margin-top: 0.5rem;
+  }
   
   .card h3 {
     font-size: 16px;

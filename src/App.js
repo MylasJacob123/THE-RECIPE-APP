@@ -9,6 +9,7 @@ import Recipes from "./components/Recipes";
 import Details from "./components/Details";
 import AddRecipes from "./components/AddNewRecipes";
 import Update from "./components/UpdateRecipe";
+import PrivateRoute from "./components/PrivateRoute"; 
 
 function App() {
   const [isLogged, setIsLogged] = useState(!!localStorage.getItem("user"));
@@ -33,10 +34,22 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register loggedIn={loggedIn} />} />
           <Route path="/login" element={<Login loggedIn={loggedIn} />} />
-          <Route path="/recipes" element={<Recipes />} />
-          <Route path="/details" element={<Details />} />
-          <Route path="/add" element={<AddRecipes />} />
-          <Route path="/update" element={<Update />} />
+          <Route 
+            path="/recipes" 
+            element={<PrivateRoute isAuthenticated={isLogged}><Recipes /></PrivateRoute>} 
+          />
+          <Route 
+            path="/details" 
+            element={<PrivateRoute isAuthenticated={isLogged}><Details /></PrivateRoute>} 
+          />
+          <Route 
+            path="/add" 
+            element={<PrivateRoute isAuthenticated={isLogged}><AddRecipes /></PrivateRoute>} 
+          />
+          <Route 
+            path="/update" 
+            element={<PrivateRoute isAuthenticated={isLogged}><Update /></PrivateRoute>} 
+          />
         </Routes>
       </BrowserRouter>
     </div>

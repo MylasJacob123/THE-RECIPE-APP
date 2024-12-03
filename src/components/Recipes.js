@@ -61,7 +61,6 @@ function Recipes() {
                   navigate("/details", { state: recipe });
                 }}
               >
-                <h2>{recipe.category}</h2>
                 <h2>{recipe.name}</h2>
                 <img
                   src={recipe.image}
@@ -89,6 +88,8 @@ function Recipes() {
                 <p>
                   <span>Serves:</span> {recipe.serves}
                 </p>
+
+                <h2 className="category"><span>Category:</span> {recipe.category}</h2>
               </div>
             ))
           ) : (

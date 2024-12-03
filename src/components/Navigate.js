@@ -39,7 +39,6 @@ function Navigate({ isLogged, loggedOut }) {
           </li>
           {isLogged ? (
             <>
-              <li className="username">Welcome, {user?.username}!</li>
               <li>
                 <Link to="/add">Add New Recipes</Link>
               </li>
