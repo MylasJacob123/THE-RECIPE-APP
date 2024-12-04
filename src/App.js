@@ -10,6 +10,7 @@ import Details from "./components/Details";
 import AddRecipes from "./components/AddNewRecipes";
 import Update from "./components/UpdateRecipe";
 import PrivateRoute from "./components/PrivateRoute"; 
+import NotFound from "./components/notAPage";
 
 function App() {
   const [isLogged, setIsLogged] = useState(!!localStorage.getItem("user"));
@@ -50,6 +51,7 @@ function App() {
             path="/update" 
             element={<PrivateRoute isAuthenticated={isLogged}><Update /></PrivateRoute>} 
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
